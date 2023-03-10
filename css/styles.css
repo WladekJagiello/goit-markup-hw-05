@@ -589,7 +589,7 @@ main {
   width: 360px;
   margin-right: 24px;
   margin-bottom: 48px;
-  border: 1px solid #e7e9fc;
+  border: 1px solid var(--accent-color);
   transition-property: box-shadow;
   transition-duration: 250ms;
   transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
@@ -611,6 +611,7 @@ main {
   content: "";
   position: absolute;
   display: inline-block;
+  z-index: 1;
   top: 0;
   left: 0;
   width: 100%;
@@ -637,6 +638,27 @@ main {
 
 .projects-item:nth-last-child(-n + 3) {
   margin-bottom: 0;
+}
+
+.hidden-text {
+  position: absolute;
+  z-index: -1;
+  top: 0;
+  left: 0;
+  padding-top: 40px;
+  padding-left: 32px;
+  padding-right: 32px;
+  line-height: 24px;
+  letter-spacing: 0.02em;
+  color: var(--background-color);
+  transition-property: z-index;
+  transition-duration: 250ms;
+  transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.projects-item:hover .hidden-text,
+.projects-item:focus .hidden-text {
+  z-index: 2;
 }
 
 .projects-card {
@@ -672,7 +694,9 @@ main {
   left: 0;
   width: 100%;
   height: 100%;
+  opacity: 1;
   background-color: rgba(46, 47, 66, 0.4);
+  transition: opacity 250ms cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 .backdrop.is-hidden {
@@ -691,9 +715,6 @@ main {
   box-shadow: 0px 1px 1px rgba(0, 0, 0, 0.14), 0px 1px 3px rgba(0, 0, 0, 0.12),
     0px 2px 1px rgba(0, 0, 0, 0.2);
   border-radius: 4px;
-  transition-property: background-color;
-  transition-duration: 250ms;
-  transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 .close {
